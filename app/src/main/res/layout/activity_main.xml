@@ -10,37 +10,56 @@
 
 
     <EditText
-        android:hint="enter phno"
         android:id="@+id/editTextPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="38dp"
         android:layout_marginTop="53dp"
         android:ems="10"
+        android:hint="enter phno"
         android:inputType="phone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:hint="enter pin"
         android:id="@+id/editTextNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="150dp"
         android:ems="10"
+        android:hint="enter pin"
         android:inputType="numberPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button"
-        android:onClick="showSnackbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="41dp"
         android:layout_marginTop="32dp"
+        android:onClick="showSnackbar"
         android:text="login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+
+    <Button
+        android:id="@+id/btnSet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:text="set"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/button" />
+
+    <TextView
+        android:id="@+id/tvMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="38dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
