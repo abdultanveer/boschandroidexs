@@ -35,6 +35,7 @@
 
     <Button
         android:id="@+id/button"
+        android:onClick="showSnackbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="41dp"
