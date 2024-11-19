@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -16,14 +17,18 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var setButton: Button   //declaration
     lateinit var mainTextView: TextView
+    lateinit var phoneET:EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)   //inflation - xml
         setButton = findViewById(R.id.btnSet)  //taking handle
         mainTextView = findViewById(R.id.tvMain)
-
-        setButton.setOnClickListener { mainTextView.setText("welcome to anndroid at bosch") }
+        phoneET = findViewById(R.id.etPhone)
+        var phnno = phoneET.text.toString()
+        setButton.setOnClickListener {
+            mainTextView.setText(""+phnno)
+        }
 
     }
 
