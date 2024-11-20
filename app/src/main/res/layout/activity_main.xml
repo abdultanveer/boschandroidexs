@@ -13,11 +13,12 @@
         android:id="@+id/etPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="38dp"
+        android:layout_marginStart="9dp"
         android:layout_marginTop="53dp"
         android:ems="10"
         android:hint="enter phno"
         android:inputType="text"
+        app:layout_constraintEnd_toStartOf="@+id/button4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,4 +73,15 @@
         android:text="dial"
         app:layout_constraintEnd_toEndOf="@+id/btnSet"
         app:layout_constraintTop_toBottomOf="@+id/btnSet" />
+
+    <Button
+        android:id="@+id/btnAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="5dp"
+        android:text="alarm"
+        app:layout_constraintBottom_toBottomOf="@+id/etPhone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etPhone" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.example.bosch
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.AlarmClock
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -44,8 +45,23 @@ class MainActivity : AppCompatActivity() {
            startActivity(myIntention)
        }
 
+       binding.btnAlarm.setOnClickListener {
+           createAlarm("bosch",10,42)
+       }
 
 
+
+    }
+
+    fun createAlarm(message: String, hour: Int, minutes: Int) {
+        val intent = Intent(AlarmClock.ACTION_SET_ALARM).apply {
+            putExtra(AlarmClock.EXTRA_MESSAGE, message)
+            putExtra(AlarmClock.EXTRA_HOUR, hour)
+            putExtra(AlarmClock.EXTRA_MINUTES, minutes)
+        }
+       // if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        //}
     }
 
     fun showSnackbar(view: View) {
