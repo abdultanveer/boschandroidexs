@@ -16,4 +16,26 @@
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="34dp"
+        android:ems="10"
+        android:hint="entner contact"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/tvHome"
+        app:layout_constraintTop_toBottomOf="@+id/tvHome" />
+
+    <Button
+        android:id="@+id/btnSelect"
+        android:onClick="handleSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:text="select"
+        app:layout_constraintStart_toStartOf="@+id/etContact"
+        app:layout_constraintTop_toBottomOf="@+id/etContact" />
 </androidx.constraintlayout.widget.ConstraintLayout>

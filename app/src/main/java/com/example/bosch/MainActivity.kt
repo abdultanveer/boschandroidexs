@@ -57,12 +57,18 @@ var TAG = MainActivity::class.java.simpleName
     private fun startHomeActivity() {
         var homeIntent = Intent(this,HomeActivity::class.java)
         homeIntent.putExtra("mykey","bosch-anndroid")
-        startActivity(homeIntent)
+        startActivityForResult(homeIntent,123) //1
     }
 
     private fun startDialer() {
         var myIntention: Intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:98765432"))
         startActivity(myIntention)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, dataIntennt: Intent?) {
+        super.onActivityResult(requestCode, resultCode, dataIntennt)
+        var contact = dataIntennt?.extras?.getString("conkey")//3
+        binding.tvMain.setText(contact)
     }
 
 
