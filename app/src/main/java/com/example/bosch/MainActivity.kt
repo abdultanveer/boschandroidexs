@@ -19,14 +19,15 @@ import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
+var TAG = MainActivity::class.java.simpleName
+    //"MainActivity"
    /* lateinit var setButton: Button   //declaration
     lateinit var mainTextView: TextView
     lateinit var phoneET:EditText // var numberOfBooks: Int = null
 */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        Log.i(TAG,"im in oncreate")
        binding = ActivityMainBinding.inflate(layoutInflater)
        val view = binding.root
        setContentView(view)
@@ -50,6 +51,36 @@ class MainActivity : AppCompatActivity() {
        }
 
 
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.e(TAG,"im in onStart")
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG,"im in onResume")
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.v(TAG,"im in onPause")
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.w(TAG,"im in onStop")
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.v(TAG,"im in onDestroy")
 
     }
 
