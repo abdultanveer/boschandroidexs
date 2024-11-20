@@ -13,8 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.bosch.databinding.ActivityHomeBinding;
 
-public class HomeActivity extends AppCompatActivity {
-        //implements View.OnClickListener {
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     ActivityHomeBinding binding;
@@ -31,20 +30,20 @@ public class HomeActivity extends AppCompatActivity {
        String data = getIntent().getExtras().getString("mykey");
        binding.tvHome.setText(data);
 
-      // binding.btnSelect.setOnClickListener(this);
+       binding.btnSelect.setOnClickListener(this);
     }
 
     public void handleSelect(View view) {
-        String contactData = binding.etContact.getText().toString();
+
+    }
+
+
+   @Override
+    public void onClick(View view) {
+ String contactData = binding.etContact.getText().toString();
         Intent dIntent = new Intent();
         dIntent.putExtra("conkey",contactData);
         setResult(RESULT_OK,dIntent);  //resultcode=RESULTOK= nose
         finish(); //close the activty 2
     }
-
-
-   /* @Override
-    public void onClick(View view) {
-
-    }*/
 }
