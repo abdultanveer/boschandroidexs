@@ -55,9 +55,17 @@ var TAG = MainActivity::class.java.simpleName
     }
 
     private fun startHomeActivity() {
+        var c = 10+ 20;
+        add(40,50)
         var homeIntent = Intent(this,HomeActivity::class.java)
         homeIntent.putExtra("mykey","bosch-anndroid")
         startActivityForResult(homeIntent,123) //1
+    }
+
+    fun add(a:Int,b:Int): Int {
+        var d = a + 40;
+        var c = d+b+a-10
+        return a+b
     }
 
     private fun startDialer() {

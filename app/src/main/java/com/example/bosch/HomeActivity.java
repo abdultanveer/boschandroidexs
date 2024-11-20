@@ -46,8 +46,7 @@ static  String TAG = HomeActivity.class.getSimpleName();
         Intent dIntent = new Intent();
         dIntent.putExtra("conkey",contactData);
         setResult(RESULT_OK,dIntent);  //resultcode=RESULTOK= nose
-        finish(); //close the activty 2
-       throw new NullPointerException("demo");
-
+       finish(); //close the activty 2
+      // throw new NullPointerException("demo");
    }
 }
