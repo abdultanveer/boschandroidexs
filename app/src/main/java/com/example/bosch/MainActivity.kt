@@ -56,6 +56,7 @@ var TAG = MainActivity::class.java.simpleName
 
     private fun startHomeActivity() {
         var homeIntent = Intent(this,HomeActivity::class.java)
+        homeIntent.putExtra("mykey","bosch-anndroid")
         startActivity(homeIntent)
     }
 
