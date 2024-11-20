@@ -11,23 +11,30 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.bosch.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
 
-    lateinit var setButton: Button   //declaration
+   /* lateinit var setButton: Button   //declaration
     lateinit var mainTextView: TextView
-    lateinit var phoneET:EditText
-
+    lateinit var phoneET:EditText // var numberOfBooks: Int = null
+*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)   //inflation - xml
-        setButton = findViewById(R.id.btnSet)  //taking handle
+
+       binding = ActivityMainBinding.inflate(layoutInflater)
+       val view = binding.root
+       setContentView(view)
+       // setContentView(R.layout.activity_main)   //inflation - xml
+        /*setButton = findViewById(R.id.btnSet)  //taking handle
         mainTextView = findViewById(R.id.tvMain)
-        phoneET = findViewById(R.id.etPhone)
-        var phnno = phoneET.text.toString()
-        setButton.setOnClickListener {
-            mainTextView.setText(""+phnno)
+        phoneET = findViewById(R.id.etPhone)*/
+        binding.btnSet.setOnClickListener {
+            var phnno = binding.etPhone.text.toString()
+
+            binding.tvMain.text = phnno
         }
 
     }

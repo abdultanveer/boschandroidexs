@@ -7,6 +7,10 @@ android {
     namespace = "com.example.bosch"
     compileSdk = 35
 
+    buildFeatures{
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.bosch"
         minSdk = 24
