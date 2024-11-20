@@ -65,6 +65,11 @@ var TAG = MainActivity::class.java.simpleName
     fun add(a:Int,b:Int): Int {
         var d = a + 40;
         var c = d+b+a-10
+        repeat(9){
+            d++
+            var f = d+ c *20
+        }
+
         return a+b
     }
 
