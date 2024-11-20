@@ -1,5 +1,7 @@
 package com.example.bosch
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -36,6 +38,13 @@ class MainActivity : AppCompatActivity() {
 
             binding.tvMain.text = phnno
         }
+
+       binding.btnDial.setOnClickListener {
+           var myIntention:Intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:98765432"))
+           startActivity(myIntention)
+       }
+
+
 
     }
 
