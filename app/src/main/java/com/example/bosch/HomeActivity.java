@@ -2,6 +2,7 @@ package com.example.bosch;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -15,7 +16,7 @@ import com.example.bosch.databinding.ActivityHomeBinding;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
-
+static  String TAG = HomeActivity.class.getSimpleName();
     ActivityHomeBinding binding;
 
 
@@ -40,10 +41,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
    @Override
     public void onClick(View view) {
- String contactData = binding.etContact.getText().toString();
+       Log.i(TAG,"onnclick");
+        String contactData = binding.etContact.getText().toString();
         Intent dIntent = new Intent();
         dIntent.putExtra("conkey",contactData);
         setResult(RESULT_OK,dIntent);  //resultcode=RESULTOK= nose
         finish(); //close the activty 2
-    }
+       throw new NullPointerException("demo");
+
+   }
 }
