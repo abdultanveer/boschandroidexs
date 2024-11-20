@@ -42,8 +42,8 @@ var TAG = MainActivity::class.java.simpleName
         }
 
        binding.btnDial.setOnClickListener {
-           var myIntention:Intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:98765432"))
-           startActivity(myIntention)
+          // startDialer()
+           startHomeActivity()
        }
 
        binding.btnAlarm.setOnClickListener {
@@ -54,21 +54,32 @@ var TAG = MainActivity::class.java.simpleName
 
     }
 
+    private fun startHomeActivity() {
+        var homeIntent = Intent(this,HomeActivity::class.java)
+        startActivity(homeIntent)
+    }
+
+    private fun startDialer() {
+        var myIntention: Intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:98765432"))
+        startActivity(myIntention)
+    }
+
+
     override fun onStart() {
         super.onStart()
-        Log.e(TAG,"im in onStart")
+        Log.e(TAG,"im in onStart--getting data/location")
 
     }
 
     override fun onResume() {
         super.onResume()
-        Log.d(TAG,"im in onResume")
+        Log.d(TAG,"im in onResume--restore state")
 
     }
 
     override fun onPause() {
         super.onPause()
-        Log.v(TAG,"im in onPause")
+        Log.v(TAG,"im in onPause--save state")
 
     }
 
@@ -80,7 +91,7 @@ var TAG = MainActivity::class.java.simpleName
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.v(TAG,"im in onDestroy")
+        Log.v(TAG,"im in onDestroy--release the resources")
 
     }
 
