@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 static  String TAG = HomeActivity.class.getSimpleName();
     ActivityHomeBinding binding;
 
+    String[]  languages = {"english","hindi","urdu","kannnada","tamil"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,9 @@ static  String TAG = HomeActivity.class.getSimpleName();
         ConstraintLayout view = binding.getRoot();
         setContentView(view);
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1,languages);
+        binding.listView.setAdapter(adapter);
        /*String data = getIntent().getExtras().getString("mykey");
        binding.tvHome.setText(data);*/
 
