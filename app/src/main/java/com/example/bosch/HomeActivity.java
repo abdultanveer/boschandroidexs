@@ -28,8 +28,8 @@ static  String TAG = HomeActivity.class.getSimpleName();
         ConstraintLayout view = binding.getRoot();
         setContentView(view);
 
-       String data = getIntent().getExtras().getString("mykey");
-       binding.tvHome.setText(data);
+       /*String data = getIntent().getExtras().getString("mykey");
+       binding.tvHome.setText(data);*/
 
        binding.btnSelect.setOnClickListener(this);
     }

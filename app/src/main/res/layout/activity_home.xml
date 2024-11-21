@@ -11,9 +11,10 @@
         android:id="@+id/tvHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="54dp"
         android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/btnSelect"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,21 +22,38 @@
         android:id="@+id/etContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="1dp"
         android:ems="10"
         android:hint="entner contact"
         android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/tvHome"
-        app:layout_constraintTop_toBottomOf="@+id/tvHome" />
+        app:layout_constraintBottom_toTopOf="@+id/listView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnSelect"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnSelect"
-        android:onClick="handleSelect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
+        android:layout_marginEnd="7dp"
+        android:onClick="handleSelect"
         android:text="select"
-        app:layout_constraintStart_toStartOf="@+id/etContact"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvHome"
+        app:layout_constraintEnd_toStartOf="@+id/etContact"
+        app:layout_constraintStart_toEndOf="@+id/tvHome" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:entries="@array/countries"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etContact" />
 </androidx.constraintlayout.widget.ConstraintLayout>
