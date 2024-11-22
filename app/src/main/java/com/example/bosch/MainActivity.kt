@@ -20,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 var TAG = MainActivity::class.java.simpleName
+    var count = 0
     //"MainActivity"
    /* lateinit var setButton: Button   //declaration
     lateinit var mainTextView: TextView
@@ -30,6 +31,7 @@ var TAG = MainActivity::class.java.simpleName
         Log.i(TAG,"im in oncreate")
        binding = ActivityMainBinding.inflate(layoutInflater)
        val view = binding.root
+
        setContentView(view)
        // setContentView(R.layout.activity_main)   //inflation - xml
         /*setButton = findViewById(R.id.btnSet)  //taking handle
@@ -40,6 +42,7 @@ var TAG = MainActivity::class.java.simpleName
 
             binding.tvMain.text = phnno
         }
+        binding.tvMain.setText(""+count)
 
        binding.btnDial.setOnClickListener {
           // startDialer()
@@ -88,6 +91,12 @@ var TAG = MainActivity::class.java.simpleName
     override fun onStart() {
         super.onStart()
         Log.e(TAG,"im in onStart--getting data/location")
+
+        binding.btnInc.setOnClickListener {
+            count++
+            binding.tvMain.setText(""+count)
+
+        }
 
     }
 
