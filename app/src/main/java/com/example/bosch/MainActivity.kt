@@ -16,6 +16,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.bosch.database.Student
 import com.example.bosch.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -97,6 +98,8 @@ class MainActivity : AppCompatActivity() {
         override fun onChanged(seconds: Int) {
             //receiving the update/notification
             binding.tvMain.setText(seconds.toString())
+            var abdul = Student("abdul",123,true,567)
+           // abdul.name = "ansari"
         }
     }
 
