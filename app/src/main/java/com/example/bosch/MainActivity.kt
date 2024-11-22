@@ -16,20 +16,23 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.bosch.database.Item
+import com.example.bosch.database.ItemDao
+import com.example.bosch.database.ItemRoomDatabase
 import com.example.bosch.database.Student
 import com.example.bosch.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     lateinit var viewModel:MainViewModel
+    lateinit var dao: ItemDao
 
     var TAG = MainActivity::class.java.simpleName
-    //"MainActivity"
-   /* lateinit var setButton: Button   //declaration
-    lateinit var mainTextView: TextView
-    lateinit var phoneET:EditText // var numberOfBooks: Int = null
-*/
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.i(TAG,"im in oncreate")
@@ -38,11 +41,9 @@ class MainActivity : AppCompatActivity() {
 
        setContentView(view)
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        var database = ItemRoomDatabase.getDatabase(this)
+        dao = database.itemDao()
 
-        // setContentView(R.layout.activity_main)   //inflation - xml
-        /*setButton = findViewById(R.id.btnSet)  //taking handle
-        mainTextView = findViewById(R.id.tvMain)
-        phoneET = findViewById(R.id.etPhone)*/
         binding.btnSet.setOnClickListener {
             var phnno = binding.etPhone.text.toString()
 
@@ -107,6 +108,9 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         Log.e(TAG,"im in onStart--getting data/location")
 
+        binding.btnInsert.setOnClickListener {
+            insertDataDb()
+        }
         //subscribe to seconds or observe seconds
         viewModel._seconds.observe(this, secsObserverphno); //me giving my phno to the postman
 
@@ -123,6 +127,14 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         Log.d(TAG,"im in onResume--restore state")
 
+    }
+
+    private fun insertDataDb() {
+
+        GlobalScope.launch {
+            var groceryItem:Item = Item(11,"fruits",11.11,22)
+            dao.insert(groceryItem)
+        }
     }
 
     override fun onPause() {

@@ -83,16 +83,6 @@
         app:layout_constraintStart_toEndOf="@+id/etPhone"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="91dp"
-        android:layout_marginBottom="46dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/scenary" />
-
     <Button
         android:id="@+id/btnInc"
         android:layout_width="wrap_content"
@@ -101,4 +91,14 @@
         android:text="increment"
         app:layout_constraintStart_toStartOf="@+id/btnSet"
         app:layout_constraintTop_toBottomOf="@+id/btnSet" />
+
+    <Button
+        android:id="@+id/btnInsert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="67dp"
+        android:text="Insert"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnInc" />
 </androidx.constraintlayout.widget.ConstraintLayout>
