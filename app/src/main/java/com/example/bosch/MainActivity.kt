@@ -145,9 +145,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun insertDataDb() {
 
-        GlobalScope.launch {
-            var groceryItem:Item = Item(11,"fruits",11.11,22)
+        GlobalScope.launch(Dispatchers.Main) {
+            var groceryItem:Item = Item(123,
+                binding.etPhone.text.toString(),
+                binding.etPin.text.toString().toDouble(),
+                binding.etPrice.text.toString().toInt())
+                //11,"fruits",11.11,22)
             dao.insert(groceryItem)
+            binding.etPrice.setText("")
+            binding.etPhone.setText("")
+            binding.etPin.setText("")
         }
     }
 
