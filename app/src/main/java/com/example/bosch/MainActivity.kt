@@ -14,13 +14,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import com.example.bosch.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-var TAG = MainActivity::class.java.simpleName
-    var count = 0
+    lateinit var viewModel:MainViewModel
+
+    var TAG = MainActivity::class.java.simpleName
     //"MainActivity"
    /* lateinit var setButton: Button   //declaration
     lateinit var mainTextView: TextView
@@ -33,7 +35,9 @@ var TAG = MainActivity::class.java.simpleName
        val view = binding.root
 
        setContentView(view)
-       // setContentView(R.layout.activity_main)   //inflation - xml
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+
+        // setContentView(R.layout.activity_main)   //inflation - xml
         /*setButton = findViewById(R.id.btnSet)  //taking handle
         mainTextView = findViewById(R.id.tvMain)
         phoneET = findViewById(R.id.etPhone)*/
@@ -42,7 +46,7 @@ var TAG = MainActivity::class.java.simpleName
 
             binding.tvMain.text = phnno
         }
-        binding.tvMain.setText(""+count)
+        binding.tvMain.setText(""+viewModel.count)
 
        binding.btnDial.setOnClickListener {
           // startDialer()
@@ -93,8 +97,8 @@ var TAG = MainActivity::class.java.simpleName
         Log.e(TAG,"im in onStart--getting data/location")
 
         binding.btnInc.setOnClickListener {
-            count++
-            binding.tvMain.setText(""+count)
+            viewModel.incrementCount()
+            binding.tvMain.setText(""+viewModel.count)
 
         }
 
