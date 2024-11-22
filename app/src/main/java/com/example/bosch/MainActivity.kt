@@ -97,8 +97,9 @@ class MainActivity : AppCompatActivity() {
         Log.e(TAG,"im in onStart--getting data/location")
 
         binding.btnInc.setOnClickListener {
-            viewModel.incrementCount()
-            binding.tvMain.setText(""+viewModel.count)
+            //viewModel.incrementCount()
+            viewModel.startTimer()
+            binding.tvMain.setText("seconds left --"+viewModel._seconds)
 
         }
 
