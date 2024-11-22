@@ -22,7 +22,10 @@ import com.example.bosch.database.ItemRoomDatabase
 import com.example.bosch.database.Student
 import com.example.bosch.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -111,6 +114,10 @@ class MainActivity : AppCompatActivity() {
         binding.btnInsert.setOnClickListener {
             insertDataDb()
         }
+
+        binding.btnGet.setOnClickListener {
+            getDataDb()
+        }
         //subscribe to seconds or observe seconds
         viewModel._seconds.observe(this, secsObserverphno); //me giving my phno to the postman
 
@@ -121,6 +128,13 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    private fun getDataDb() {
+        GlobalScope.launch(Dispatchers.Main) {
+           var item = dao.getItems().first()
+            binding.tvMain.setText(item.toString())
+        }
     }
 
     override fun onResume() {

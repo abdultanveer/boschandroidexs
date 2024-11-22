@@ -12,12 +12,11 @@
         android:id="@+id/etPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
+        android:layout_marginStart="39dp"
         android:layout_marginTop="53dp"
         android:ems="10"
         android:hint="enter phno"
         android:inputType="text"
-        app:layout_constraintEnd_toStartOf="@+id/btnAlarm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,12 +24,12 @@
         android:id="@+id/etPin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="150dp"
+        android:layout_marginEnd="18dp"
         android:ems="10"
         android:hint="enter pin"
         android:inputType="numberPassword"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnInc"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -67,38 +66,46 @@
         android:id="@+id/btnDial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
         android:text="dial"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnSet"
-        app:layout_constraintStart_toEndOf="@+id/btnSet" />
+        app:layout_constraintStart_toStartOf="@+id/btnInc" />
 
     <Button
         android:id="@+id/btnAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
-        android:layout_marginEnd="14dp"
+        android:layout_marginEnd="44dp"
         android:text="alarm"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/etPhone"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnInc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
+        android:layout_marginEnd="30dp"
         android:text="increment"
-        app:layout_constraintStart_toStartOf="@+id/btnSet"
-        app:layout_constraintTop_toBottomOf="@+id/btnSet" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/etPin"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btnInsert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
-        android:layout_marginTop="67dp"
+        android:layout_marginBottom="255dp"
         android:text="Insert"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnInc" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnGet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginBottom="7dp"
+        android:text="get"
+        app:layout_constraintBottom_toBottomOf="@+id/btnInsert"
+        app:layout_constraintStart_toEndOf="@+id/btnInsert" />
 </androidx.constraintlayout.widget.ConstraintLayout>
