@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.bosch.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
@@ -92,9 +93,19 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    var secsObserverphno: Observer<Int> = object : Observer<Int> {
+        override fun onChanged(seconds: Int) {
+            //receiving the update/notification
+            binding.tvMain.setText(seconds.toString())
+        }
+    }
+
     override fun onStart() {
         super.onStart()
         Log.e(TAG,"im in onStart--getting data/location")
+
+        //subscribe to seconds or observe seconds
+        viewModel._seconds.observe(this, secsObserverphno); //me giving my phno to the postman
 
         binding.btnInc.setOnClickListener {
             //viewModel.incrementCount()
