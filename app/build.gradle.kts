@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.moshi.kotlin)
     implementation(libs.moshi)
     implementation(libs.converter.moshi)
+    implementation(libs.coil)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

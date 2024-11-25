@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import coil.load
 import com.example.bosch.databinding.ActivityInternetBinding
-import com.example.bosch.databinding.ActivityMainBinding
 import com.example.bosch.internet.MarsApi
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
@@ -35,9 +33,10 @@ lateinit var binding: ActivityInternetBinding
         }
         GlobalScope.launch(Dispatchers.Main
                 + coroutineExceptionHandler) {
-            val listResult = MarsApi.retrofitService.getPhotos().get(0).imgSrc
-           binding.tvJson.setText(listResult)
-            Log.i(TAG,listResult.toString())
+            val url = MarsApi.retrofitService.getPhotos().get(0).imgSrc
+           binding.tvJson.setText(url)
+            Log.i(TAG,url.toString())
+            binding.imageView.load(url)
         }
 
     }

@@ -14,6 +14,7 @@ retrofit = "2.11.0"
 moshiKotlin = "1.15.1"
 moshi = "1.15.1"
 converterMoshi = "2.11.0"
+coil = "2.7.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -29,6 +30,7 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshiKotlin" }
 moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshi" }
 converter-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "converterMoshi" }
+coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
