@@ -31,11 +31,12 @@
 
     <Button
         android:id="@+id/btnSelect"
-        android:onClick="handleSelect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="39dp"
+        android:onClick="handleSelect"
         android:text="select"
         app:layout_constraintStart_toStartOf="@+id/etContact"
         app:layout_constraintTop_toBottomOf="@+id/etContact" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

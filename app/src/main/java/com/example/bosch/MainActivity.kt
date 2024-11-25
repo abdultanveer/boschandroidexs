@@ -20,21 +20,15 @@ import com.google.android.material.snackbar.Snackbar
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 var TAG = MainActivity::class.java.simpleName
-    //"MainActivity"
-   /* lateinit var setButton: Button   //declaration
-    lateinit var mainTextView: TextView
-    lateinit var phoneET:EditText // var numberOfBooks: Int = null
-*/
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.i(TAG,"im in oncreate")
        binding = ActivityMainBinding.inflate(layoutInflater)
        val view = binding.root
        setContentView(view)
-       // setContentView(R.layout.activity_main)   //inflation - xml
-        /*setButton = findViewById(R.id.btnSet)  //taking handle
-        mainTextView = findViewById(R.id.tvMain)
-        phoneET = findViewById(R.id.etPhone)*/
+
         binding.btnSet.setOnClickListener {
             var phnno = binding.etPhone.text.toString()
 
