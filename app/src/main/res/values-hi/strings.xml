@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="enter_name">आइटम का नाम दर्ज करें</string>
+    <string name="enter_price">कीमत दर्ज करें  </string>
+    <string name="increment">वेतन वृद्धि</string>
+</resources>
