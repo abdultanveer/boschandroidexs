@@ -144,7 +144,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun insertDataDb() {
-
+    //launch = coroutine  -- suspendable functions can be called/innvoked from other suspenndable functions or coroutines
+       //Main,IO,Default -- abdul,gokul and manasa
+        //only main thread can touch the ui elements
         GlobalScope.launch(Dispatchers.Main) {
             var groceryItem:Item = Item(123,
                 binding.etPhone.text.toString(),

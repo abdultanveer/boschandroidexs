@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "bosch"
 include(":app")
+include(":callbacklib")
