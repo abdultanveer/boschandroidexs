@@ -9,6 +9,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.bosch.databinding.ActivityInternetBinding
 import com.example.bosch.databinding.ActivityMainBinding
 import com.example.bosch.internet.MarsApi
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -28,8 +30,13 @@ lateinit var binding: ActivityInternetBinding
     }
 
     private fun getMarsPhotos() {
-        GlobalScope.launch {
-            val listResult = MarsApi.retrofitService.getPhotos()
+        val coroutineExceptionHandler = CoroutineExceptionHandler{_, throwable ->
+            throwable.printStackTrace()
+        }
+        GlobalScope.launch(Dispatchers.Main
+                + coroutineExceptionHandler) {
+            val listResult = MarsApi.retrofitService.getPhotos().get(0).imgSrc
+           binding.tvJson.setText(listResult)
             Log.i(TAG,listResult.toString())
         }
 

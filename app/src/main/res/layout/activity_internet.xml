@@ -16,4 +16,14 @@
         android:text="get json"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvJson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="43dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/btnJson"
+        app:layout_constraintTop_toBottomOf="@+id/btnJson" />
 </androidx.constraintlayout.widget.ConstraintLayout>
