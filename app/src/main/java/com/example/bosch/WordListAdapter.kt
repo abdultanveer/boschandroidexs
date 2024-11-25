@@ -3,10 +3,12 @@ package com.example.bosch
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.bosch.internet.MarsPhoto
 
 
@@ -18,14 +20,18 @@ class WordListAdapter : ListAdapter<MarsPhoto, WordListAdapter.WordViewHolder>(W
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.imgSrc)
+        holder.bind(current)
     }
 
     class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val wordItemViewId: TextView = itemView.findViewById(R.id.textViewId)
+        private val wordImageView: ImageView = itemView.findViewById(R.id.imageViewVC)
         private val wordItemView: TextView = itemView.findViewById(R.id.textViewurl)
 
-        fun bind(text: String?) {
-            wordItemView.text = text
+        fun bind(marsPhoto: MarsPhoto) {
+            wordItemView.text = marsPhoto.imgSrc
+            wordImageView.load(marsPhoto.imgSrc)
+            wordItemViewId.text = marsPhoto.id
         }
 
         companion object {

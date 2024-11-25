@@ -48,7 +48,7 @@ lateinit var binding: ActivityInternetBinding
             val url = listPhotos.get(0).imgSrc
            binding.tvJson.setText(url)
             Log.i(TAG,url.toString())
-            binding.imageView.load(url)
+            //binding.imageView.load(url)
         }
 
     }
