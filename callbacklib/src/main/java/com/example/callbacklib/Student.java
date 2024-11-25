@@ -7,10 +7,10 @@ public class Student {
         return a+b;
     }
 
-    int rahulAdd(int a, int b){
+    void rahulAdd(int a, int b,MobilePhone phonneno){
         try {
             Thread.sleep(5000);
-            return a+b;
+            phonneno.callBack(a+b);   //rahul is clicking the switch
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
