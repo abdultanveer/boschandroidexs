@@ -1,19 +1,15 @@
 package com.example.bosch
 
 import android.content.Intent
+import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.provider.AlarmClock
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
+import android.widget.SimpleCursorAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.bosch.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -88,6 +84,13 @@ var TAG = MainActivity::class.java.simpleName
     override fun onStart() {
         super.onStart()
         Log.e(TAG,"im in onStart--getting data/location")
+        val uriSms = Uri.parse("content://sms/inbox")
+        val dataCursor: Cursor? = getContentResolver().query(uriSms, null, null, null, null)
+        var from = arrayOf("address","body")
+        var to = intArrayOf(android.R.id.text1,android.R.id.text2)
+        var adapter:SimpleCursorAdapter = SimpleCursorAdapter(this,
+            android.R.layout.simple_list_item_2,dataCursor,from,to,1)
+        binding.listView.adapter = adapter
 
     }
 
