@@ -2,19 +2,20 @@ package com.example.bosch
 
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import coil.load
 import com.example.bosch.databinding.ActivityInternetBinding
 import com.example.bosch.internet.MarsApi
 import com.example.bosch.internet.MarsPhoto
+import com.google.android.gms.tasks.Task
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+
 
 class InternetActivity : AppCompatActivity() {
     var TAG = InternetActivity::class.java.simpleName
@@ -44,7 +45,21 @@ lateinit var binding: ActivityInternetBinding
         super.onStart()
         binding.btnSend.setOnClickListener { sendFirestore() }
         binding.btnGet.setOnClickListener { getFireStore() }
+        binding.btnFcm.setOnClickListener { getFcmToken() }
     }
+
+    private fun getFcmToken() {
+        FirebaseMessaging.getInstance().token
+            .addOnCompleteListener { task: Task<String> ->
+                if (!task.isSuccessful) {
+                    Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                    return@addOnCompleteListener
+                }
+                // Get the FCM token
+                val token = task.result
+                Log.d(TAG, "FCM Registration Token: $token")
+            }    }
+
 
     private fun getFireStore() {
         db.collection("bosch")
@@ -89,7 +104,7 @@ lateinit var binding: ActivityInternetBinding
             adapter.submitList(listPhotos)
             adapter.notifyDataSetChanged()
             val url = listPhotos.get(0).imgSrc
-           binding.tvJson.setText(url)
+           //binding.tvJson.setText(url)
             Log.i(TAG,url.toString())
             //binding.imageView.load(url)
         }
