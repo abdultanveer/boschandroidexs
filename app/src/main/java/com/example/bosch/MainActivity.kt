@@ -47,7 +47,9 @@ var TAG = MainActivity::class.java.simpleName
        }
 
        binding.btnAlarm.setOnClickListener {
-           createAlarm("bosch",10,42)
+          // createAlarm("bosch",10,42)
+           var msg = binding.etPhone.text.toString()
+           binding.tvMain.text = msg
        }
 
 
