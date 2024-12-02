@@ -43,6 +43,11 @@
             android:exported="true">
 
         </activity>
+
+        <provider
+            android:name=".contentprovider.ContactProvider"
+            android:authorities="com.example.appa.provider"
+            android:exported="true" />
     </application>
 
 </manifest>
