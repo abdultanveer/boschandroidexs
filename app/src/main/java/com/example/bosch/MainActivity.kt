@@ -1,8 +1,12 @@
 package com.example.bosch
 
+import android.content.ComponentName
+import android.content.ContentValues
 import android.content.Intent
+import android.content.ServiceConnection
 import android.net.Uri
 import android.os.Bundle
+import android.os.IBinder
 import android.provider.AlarmClock
 import android.util.Log
 import android.view.View
@@ -15,11 +19,15 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.bosch.databinding.ActivityMainBinding
+import com.example.bosch2.IAddition
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-var TAG = MainActivity::class.java.simpleName
+
+    var iRemoteService: IAddition? = null
+
+    var TAG = MainActivity::class.java.simpleName
     //"MainActivity"
    /* lateinit var setButton: Button   //declaration
     lateinit var mainTextView: TextView
@@ -90,13 +98,58 @@ var TAG = MainActivity::class.java.simpleName
     override fun onStart() {
         super.onStart()
         Log.e(TAG,"im in onStart--getting data/location")
+        binding.btnputcp.setOnClickListener {
+            var uri = Uri.parse("content://com.example.appa.provider/contacts")
+            var cursor = contentResolver.query(uri,null,null,null,null)
+            var values = ContentValues()
+            values.put("name","bosch-anndroid")
+            values.put("phone",9876543)
+            contentResolver.insert(uri,values)
+        }
+
+        binding.btngetcp.setOnClickListener {
+            var uri = Uri.parse("content://com.example.appa.provider/contacts")
+            var cursor = contentResolver.query(uri,null,null,null,null)
+            cursor?.moveToLast()
+            var name = cursor?.getColumnIndex("name")?.let { cursor.getString(it) }
+            var phone = cursor?.getColumnIndex("phone")?.let { cursor.getString(it) }
+            binding.tvMain.setText("name--"+ name+"-phone no is--"+phone)
+        }
 
     }
 
     override fun onResume() {
         super.onResume()
         Log.d(TAG,"im in onResume--restore state")
+        binding.btnBind.setOnClickListener { bindAdditionService() }
 
+    }
+
+    private fun bindAdditionService() {
+        var addInmntent = Intent("hey.please.add.nos")
+
+
+        val pack = IAddition::class.java.`package`
+        addInmntent.setPackage(pack.name)
+        bindService(addInmntent,serviceConnection, BIND_AUTO_CREATE)
+    }
+
+    private val serviceConnection = object : ServiceConnection {
+
+        override fun onServiceConnected(p0: ComponentName?, aidlBinder: IBinder?) {//3
+
+            iRemoteService = IAddition.Stub.asInterface(aidlBinder)
+             var result =   iRemoteService?.sumAdd(30,40)
+            binding.tvMain.text = "result sum --"+result
+
+//            val mylocalBinder = localBinder as AdditionService.LocalBinder
+//            additionService = mylocalBinder.getService()//4
+//            var sum = additionService.addNos(10,20)//6
+//            binding.textView.text ="sum--"+sum //8
+        }
+
+        override fun onServiceDisconnected(p0: ComponentName?) {
+        }
     }
 
     override fun onPause() {
